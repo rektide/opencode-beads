@@ -10,6 +10,7 @@ import { deleteSchema, executeDelete } from "./src/delete.js";
 import { epicStatusSchema, executeEpicStatus } from "./src/epic.js";
 import { commentsViewSchema, commentsAddSchema, executeCommentsView, executeCommentsAdd } from "./src/comments.js";
 import { labelAddSchema, labelRemoveSchema, labelListSchema, labelListAllSchema, executeLabelAdd, executeLabelRemove, executeLabelList, executeLabelListAll } from "./src/label.js";
+import { enterSchema, executeEnter, leaveSchema, executeLeave } from "./src/enter.js";
 
 interface NavState {
 	parentId: string;
@@ -107,6 +108,18 @@ export const BeadsPlugin: Plugin = async (ctx) => {
 				description: "List all unique labels in the database",
 				args: labelListAllSchema,
 				execute: executeLabelListAll,
+			}),
+
+			enter_session: tool({
+				description: "Enter a session with specific limits (e.g., parent ID) that will be applied to subsequent bd commands",
+				args: enterSchema,
+				execute: executeEnter,
+			}),
+
+			leave_session: tool({
+				description: "Leave a session and remove its limits",
+				args: leaveSchema,
+				execute: executeLeave,
 			}),
 			// TODO: add `list` tool.
 
