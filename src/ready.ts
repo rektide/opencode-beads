@@ -1,18 +1,26 @@
-import { z } from "zod";
 import { x } from "tinyexec";
 import type { ToolContext } from "@opencode-ai/plugin";
+import { tool } from "@opencode-ai/plugin";
 
-export const readySchema = z.object({
-	assignee: z.string().optional().describe("Filter by assignee"),
-	label: z.array(z.string()).optional().describe("Filter by labels (AND: must have ALL)"),
-	labelAny: z.array(z.string()).optional().describe("Filter by labels (OR: must have AT LEAST ONE)"),
-	limit: z.number().int().positive().default(10).describe("Maximum issues to show"),
-	priority: z.number().int().min(0).max(4).optional().describe("Filter by priority (0-4)"),
-	sort: z.enum(["hybrid", "priority", "oldest"]).default("hybrid").describe("Sort policy"),
-	unassigned: z.boolean().optional().describe("Show only unassigned issues"),
-});
+export const readySchema = {
+	assignee: tool.schema.string().optional().describe("Filter by assignee"),
+	label: tool.schema.array(tool.schema.string()).optional().describe("Filter by labels (AND: must have ALL)"),
+	labelAny: tool.schema.array(tool.schema.string()).optional().describe("Filter by labels (OR: must have AT LEAST ONE)"),
+	limit: tool.schema.number().int().positive().default(10).describe("Maximum issues to show"),
+	priority: tool.schema.number().int().min(0).max(4).optional().describe("Filter by priority (0-4)"),
+	sort: tool.schema.enum(["hybrid", "priority", "oldest"]).default("hybrid").describe("Sort policy"),
+	unassigned: tool.schema.boolean().optional().describe("Show only unassigned issues"),
+};
 
-export type ReadyArgs = z.infer<typeof readySchema>;
+export type ReadyArgs = {
+	assignee?: string;
+	label?: string[];
+	labelAny?: string[];
+	limit?: number;
+	priority?: number;
+	sort?: "hybrid" | "priority" | "oldest";
+	unassigned?: boolean;
+};
 
 export function parseReadyArgs(args: ReadyArgs): string[] {
 	const params = ["ready"];

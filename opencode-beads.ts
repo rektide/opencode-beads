@@ -1,7 +1,7 @@
 import type { Plugin, ToolContext } from "@opencode-ai/plugin";
 import { tool } from "@opencode-ai/plugin";
 import { x } from "tinyexec";
-import { readySchema, parseReadyArgs } from "./src/ready.js";
+import { readySchema, executeReady } from "./src/ready.js";
 
 interface NavState {
 	parentId: string;
