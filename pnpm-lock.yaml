@@ -1,0 +1,52 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@opencode-ai/plugin':
+        specifier: ^1.0.123
+        version: 1.0.123
+      tinyexec:
+        specifier: ^1.0.2
+        version: 1.0.2
+      zod:
+        specifier: ^4.1.13
+        version: 4.1.13
+
+packages:
+
+  '@opencode-ai/plugin@1.0.123':
+    resolution: {integrity: sha512-yL+o7I9w56IaBvK42O7S2vA3FAmmeNHQRh8ZgoBSvlR2rstq4A/XW1zsVeiB0+Q0eC1DOWliSoropQNEXniUQQ==}
+
+  '@opencode-ai/sdk@1.0.123':
+    resolution: {integrity: sha512-M3mkvLhkcD7pAsutMa+QzcCOlZJcpoElf0Mn2ecUbTquj8qlLGwuOrRnyIVn7Vwn4Prl+Pf7nBU98BTOrJx2CQ==}
+
+  tinyexec@1.0.2:
+    resolution: {integrity: sha512-W/KYk+NFhkmsYpuHq5JykngiOCnxeVL8v8dFnqxSD8qEEdRfXk1SDM6JzNqcERbcGYj9tMrDQBYV9cjgnunFIg==}
+    engines: {node: '>=18'}
+
+  zod@4.1.13:
+    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
+
+  zod@4.1.8:
+    resolution: {integrity: sha512-5R1P+WwQqmmMIEACyzSvo4JXHY5WiAFHRMg+zBZKgKS+Q1viRa0C1hmUKtHltoIFKtIdki3pRxkmpP74jnNYHQ==}
+
+snapshots:
+
+  '@opencode-ai/plugin@1.0.123':
+    dependencies:
+      '@opencode-ai/sdk': 1.0.123
+      zod: 4.1.8
+
+  '@opencode-ai/sdk@1.0.123': {}
+
+  tinyexec@1.0.2: {}
+
+  zod@4.1.13: {}
+
+  zod@4.1.8: {}

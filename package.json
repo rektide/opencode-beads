@@ -1,0 +1,23 @@
+{
+	"name": "opencode-beads",
+	"version": "1.0.0",
+	"description": "An OpenCode plugin for Beads issue-tracker",
+	"main": "opencode-beads.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"link": "mkdir -p $HOME/.config/opencode/plugin && ln -s $(pwd)/opencode-beads.ts ~/.config/opencode/plugin"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.voodoowarez.com/opencode-beads"
+	},
+	"keywords": [],
+	"author": "rektide de la faye",
+	"license": "MIT",
+	"type": "module",
+	"dependencies": {
+		"@opencode-ai/plugin": "^1.0.123",
+		"tinyexec": "^1.0.2",
+		"zod": "^4.1.13"
+	}
+}
