@@ -11,6 +11,7 @@ import { epicStatusSchema, executeEpicStatus } from "./src/epic.js";
 import { commentsViewSchema, commentsAddSchema, executeCommentsView, executeCommentsAdd } from "./src/comments.js";
 import { labelAddSchema, labelRemoveSchema, labelListSchema, labelListAllSchema, executeLabelAdd, executeLabelRemove, executeLabelList, executeLabelListAll } from "./src/label.js";
 import { enterSchema, executeEnter, leaveSchema, executeLeave } from "./src/enter.js";
+import { listSchema, executeList } from "./src/list.js";
 
 interface NavState {
 	parentId: string;
@@ -121,7 +122,12 @@ export const BeadsPlugin: Plugin = async (ctx) => {
 				args: leaveSchema,
 				execute: executeLeave,
 			}),
-			// TODO: add `list` tool.
+
+			list_issues: tool({
+				description: "List issues with comprehensive filtering and sorting options",
+				args: listSchema,
+				execute: executeList,
+			}),
 
 			// TODO add a "load_todos" tool to load all tasks in the current nav into OpenCode todos
 		},
