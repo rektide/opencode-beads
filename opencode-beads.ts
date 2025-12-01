@@ -26,20 +26,7 @@ export const BeadsPlugin: Plugin = async (ctx) => {
 			ready: tool({
 				description: "List ready tasks",
 				args: readySchema,
-				async execute(args, context: ToolContext) {
-					const params = parseReadyArgs(args);
-					
-					// TODO: add `navState` filters for any filters not set by args
-					const result = await x("bd", params);
-
-					if (result.exitCode) {
-						throw new Error(
-							`bd failed when trying to get a list of ready tasks`,
-						);
-					}
-
-					return result.stdout;
-				},
+				execute: executeReady,
 			}),
 
 			create_task: tool({

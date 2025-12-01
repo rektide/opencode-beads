@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { x } from "tinyexec";
+import type { ToolContext } from "@opencode-ai/plugin";
 
 export const readySchema = z.object({
 	assignee: z.string().optional().describe("Filter by assignee"),
@@ -28,4 +30,19 @@ export function parseReadyArgs(args: ReadyArgs): string[] {
 	if (args.unassigned) params.push("--unassigned");
 	
 	return params;
+}
+
+export async function executeReady(args: ReadyArgs, context: ToolContext) {
+	const params = parseReadyArgs(args);
+	
+	// TODO: add `navState` filters for any filters not set by args
+	const result = await x("bd", params);
+
+	if (result.exitCode) {
+		throw new Error(
+			`bd failed when trying to get a list of ready tasks`,
+		);
+	}
+
+	return result.stdout;
 }
