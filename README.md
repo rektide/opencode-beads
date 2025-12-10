@@ -13,3 +13,7 @@ For now, manually copy or link `beads-opencode.ts` into `~/.config/opencode/plug
 ## Navigation
 
 Dumping the entire Beads issue-tracking into OpenCode's Todo is almost certainly not what we want: in many cases we expect that to be far too big. Nav is a set of tools for discovery, and which more, like a directory, it helps us to walk into the tree of tasks, to an area of focus. Other tools will likely be constrained by the nav tool.
+
+# Unofficial
+
+Note that opencode-beads is not a formal project of either OpenCode nor Beads, not built by either team. This is an independent and unaffiliated effort.
